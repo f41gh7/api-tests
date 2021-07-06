@@ -67,6 +67,8 @@ spec:
 metadata:
   name: msk
   namespace: vm-operator
+  labels:
+      sp.corp/managed-by: msk-manifests
 kind: VMAlert
 apiVersion: operator.victoriametrics.com/v1beta1
 ---
