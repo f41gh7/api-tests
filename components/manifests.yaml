@@ -1,0 +1,40 @@
+spec:
+  image:
+    tag: v1.61.1
+  retentionPeriod: 2d
+  removePvcAfterDelete: true
+  logFormat: json
+  storage:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 20Gi
+metadata:
+  name: msk
+  namespace: vm-operator
+kind: VMSingle
+apiVersion: operator.victoriametrics.com/v1beta1
+---
+spec:
+  image:
+    tag: v1.61.1
+  replicaCount: 1
+  datasource:
+    url: http://vmsingle-msk:8429
+  remoteWrite:
+    url: http://vmsingle-msk:8429
+  remoteRead:
+    url: http://vmsingle-msk:8429
+  notifier:
+    url: http://vmalertmanager-msk:9093
+  evaluationInterval: 30s
+  ruleNamespaceSelector: {}
+  ruleSelector: {}
+  logFormat: json
+metadata:
+  name: msk
+  namespace: vm-operator
+kind: VMAlert
+apiVersion: operator.victoriametrics.com/v1beta1
+---
