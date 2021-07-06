@@ -1,6 +1,8 @@
 metadata:
   name: msk
   namespace: vm-operator
+  labels:
+   sp.corp/managed-by: msk-manifests
 spec:
   image:
     tag: v1.61.1
