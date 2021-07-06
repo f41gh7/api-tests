@@ -1,3 +1,35 @@
+metadata:
+  name: msk
+  namespace: vm-operator
+spec:
+  image:
+    tag: v1.61.1
+  serviceScrapeNamespaceSelector: {}
+  podScrapeNamespaceSelector: {}
+  podScrapeSelector: {}
+  serviceScrapeSelector: {}
+  nodeScrapeSelector: {}
+  nodeScrapeNamespaceSelector: {}
+  staticScrapeSelector: {}
+  staticScrapeNamespaceSelector: {}
+  replicaCount: 1
+  logFormat: json
+  externalLabels:
+    site: msk
+    kind: kubernetes
+    cluster: msk
+  remoteWrite:
+  - url: http://vmsingle-msk:8429/api/v1/write
+  resources:
+    limits:
+      cpu: "1"
+      memory: 2000Mi
+    requests:
+      cpu: 500m
+      memory: 1000Mi
+kind: VMAgent
+apiVersion: operator.victoriametrics.com/v1beta1
+---
 spec:
   image:
     tag: v1.61.1
