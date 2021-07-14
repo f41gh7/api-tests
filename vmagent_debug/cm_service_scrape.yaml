@@ -1,0 +1,19 @@
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMServiceScrape
+metadata:
+  name: contract-service
+  namespace: cm-develop
+spec:
+  discoveryRole: service
+  endpoints:
+  - path: /actuator/prometheus
+    port: management
+    scheme: http
+    scrapeTimeout: 2s
+  namespaceSelector: {}
+  podTargetLabels: []
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: cm
+      app.kubernetes.io/name: contract-service
+  targetLabels: []
